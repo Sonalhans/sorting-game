@@ -21,7 +21,7 @@ selected_numbers = []
 
 root = tk.Tk()
 root.title("Sorting Game with QuickSort")
-root.geometry("600x400")
+root.geometry("900x400")
 
 
 message_label = tk.Label(root, text="Click the numbers in sorted order.", font=("Comic Sans MS", 16))
