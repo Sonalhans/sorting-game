@@ -23,28 +23,35 @@ root = tk.Tk()
 root.title("Sorting Game with QuickSort")
 root.geometry("900x400")
 
+welcome_frame = tk.Frame(root)
+game_frame = tk.Frame(root)
 
-message_label = tk.Label(root, text="Click the numbers in sorted order.", font=("Comic Sans MS", 16))
+def show_game_screen():
+    welcome_frame.pack_forget()
+    game_frame.pack()
+
+welcome_message = tk.Label(welcome_frame, text="Welcome to the Sorting Game!\nSort the numbers in order!", font=("Comic Sans MS", 18), pady=20)
+welcome_message.pack()
+
+start_button = tk.Button(welcome_frame, text="Start Game", font=("Comic Sans MS", 14), command=show_game_screen)
+start_button.pack(pady=20)
+
+message_label = tk.Label(game_frame, text="Click the numbers in sorted order.", font=("Comic Sans MS", 16))
 message_label.pack(pady=10)
 
-
-button_frame = tk.Frame(root)
+button_frame = tk.Frame(game_frame)
 button_frame.pack(pady=20)
-
 
 buttons = {}
 
-
-selected_label = tk.Label(root, text="Ordered numbers: ", font=("Comic Sans MS", 14), fg="black")
+selected_label = tk.Label(game_frame, text="Ordered numbers: ", font=("Comic Sans MS", 14), fg="black")
 selected_label.pack(pady=10)
 
 def update_message(text, color):
     message_label.config(text=text, fg=color)
 
-
 def update_selected_label():
     selected_label.config(text="Selected: " + " ".join(map(str, selected_numbers)))
-
 
 def on_button_click(number, idx):
     global current_index
@@ -66,4 +73,5 @@ for idx, num in enumerate(numbers):
     buttons[idx] = button
 
 
+welcome_frame.pack()
 root.mainloop()
